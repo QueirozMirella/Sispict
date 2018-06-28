@@ -1,0 +1,128 @@
+// Place all the styles related to the uenf controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+a:visited {
+    color: #126ffb;
+}
+
+a:hover {
+    color: #126ffb;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #2a7fff;
+}
+
+header#navigator {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header#navigator ul {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+header#navigator ul li {
+    margin: 0 0 0 10px;
+    list-style: none;
+    width: auto;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    a {
+        text-decoration: none;
+    }
+    a:hover {
+        color: #126ffb;
+        text-decoration: underline;
+    }
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    font-size: 28px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+label {
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 6px;
+}
+
+input#usuario_email,
+input#usuario_password,
+input#usuario_password_confirmation,
+input#usuario_nome,
+input#usuario_sobrenome,
+input#usuario_cpf,
+input#usuario_telefone,
+input#usuario_celular,
+input#usuario_matricula,
+input#usuario_cr,
+input#usuario_lattes,
+input#usuario_data_de_nascimento {
+    width: 500px;
+    font-size: 15px;
+    margin-bottom: 1em;
+    font-family: 'Poppins', sans-serif;
+    padding: 3px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    height: 2em;
+    background-color: #126ffb;
+    border-radius: 4px;
+    font-size: 1.2em;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+main .input-field {
+    display: flex;
+    justify-content: space-between;
+}
+
+a.devise_link {
+    margin: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+p.alert,
+p.notice {
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+p.alert {
+    color: red;
+}
+
+p.notice {
+    color: green;
+}
+
+div#error_explanation {
+    border: 1px solid red;
+    margin: 1em;
+    color: red;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+    <title>SISPICT - Sistema de Gerenciamento do programa de iniciação científica da UENF</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag    'backoffice', media: 'all' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'backoffice', 'data-turbolinks-track': 'reload' %>
+
+</head>
+<body class="nav-md">
+    <%= render 'layouts/backoffice_shared/pace_inative' %>
+
+    <div class="container body">
+
+      <div class="main_container">
+
+       <%= render 'layouts/backoffice_shared/topbar' %>
+       <%= render 'layouts/backoffice_shared/sidebar' %>
+
+      <main class="right_col" role="main">
+        <div class="">
+          <% flash.each do |key, message| %>
+            <div class="alert-style alert alert-<%= key %>">
+              <%= message %>
+            </div>
+            <% end %>
+          <div>
+            <%= yield %>
+          </div>
+
+        </div>
+      </main>
+
+      <%= render 'layouts/backoffice_shared/footer' %>
+
+  </div>
+</div>
+
+
+</body>
+
+</html>

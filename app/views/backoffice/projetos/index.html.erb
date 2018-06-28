@@ -1,0 +1,28 @@
+ 
+<h1>Projetos</h1>
+
+<table  class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Palavras chave</th>
+      <th>Area</th>
+      <th>Objetivo</th>
+      <th colspan="3">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projetos.each do |projeto| %>
+      <tr>
+        <td><%= projeto.titulo %></td>
+        <td><%= projeto.palavras_chave %></td>
+        <td><%= projeto.area %></td>
+        <td><%= projeto.objetivo %></td>
+        <td><%= link_to 'Mostrar', backoffice_edital_projeto_path(@edital, projeto) %></td>
+        <td><%= link_to 'Editar', edit_backoffice_edital_projeto_path(@edital, projeto) %></td>
+        <td><%= link_to 'Excluir', backoffice_edital_projeto_path(@edital, projeto), method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

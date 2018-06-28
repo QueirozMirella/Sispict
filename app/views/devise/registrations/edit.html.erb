@@ -1,0 +1,198 @@
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal form-label-left' }) do |f| %>
+  <%= devise_error_messages! %>
+
+
+  <h2>Profile</h2>
+
+  <div class="form-group">
+    <%= f.label :nome, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+    <%= f.text_field :nome, autocomplete: "off", class: 'form-control col-md-7 col-xs-12' %>
+   </div> 
+  </div>
+
+  <div class="form-group">
+    <%= f.label :sobrenome, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+    <%= f.text_field :sobrenome, autocomplete: "off", class: 'form-control col-md-7 col-xs-12' %>
+   </div> 
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, 'E-mail', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+    <%= f.email_field :email, autofocus: true, class: 'form-control col-md-7 col-xs-12' %>
+            <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+        </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :telefone, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+    <%= f.phone_field :telefone, autofocus: true, class: 'form-control col-md-7 col-xs-12' %>
+            <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+        </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :celular, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+    <%= f.phone_field :celular, autofocus: true, class: 'form-control col-md-7 col-xs-12' %>
+            <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+        </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :data_de_nascimento, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+    <%= f.date_field :data_de_nascimento, autofocus: true, class: 'form-control col-md-7 col-xs-12' %>
+            <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+        </div>
+  </div>
+
+
+
+
+  <h2>Identidade</h2>
+   
+  <% @usuario.build_identidade if @usuario.identidade.nil? %>
+  <%= f.fields_for :identidade do |identidade| %>
+    <div class="form-group">
+      <%= identidade.label :asset, 'Arquivo(*.pdf)', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <%= identidade.file_field :asset, class: 'col-md-6 col-sm-6 col-xs-12' %>
+        </div>
+    </div>
+    <% end %>
+
+
+  <% @usuario.build_cpf if @usuario.cpf.nil? %>
+  <h2>CPF</h2>
+  
+  <%= f.fields_for :cpf do |cpf| %>
+
+    <div class="form-group">
+      <%= cpf.label :numero, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <%= cpf.text_field :numero, class: 'form-control col-md-7 col-xs-12' %>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <%= cpf.label :asset, 'Arquivo(*.pdf)', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <%= cpf.file_field :asset, class: 'col-md-6 col-sm-6 col-xs-12' %>
+        </div>
+    </div>
+    <% end %>
+<h2>Dados Acâdemico</h2>
+
+  <div class="form-group">
+    <%= f.label :cr, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+    <%= f.number_field :cr, class: 'form-control col-md-7 col-xs-12' %>
+   </div> 
+  </div>
+
+  <div class="form-group">
+    <%= f.label :lattes, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+    <%= f.url_field :lattes, class: 'form-control col-md-7 col-xs-12' %>
+   </div> 
+  </div>
+
+
+    
+  <% @usuario.build_curriculo if @usuario.curriculo.nil? %>
+  <h2>Curriculo</h2>
+  
+  <%= f.fields_for :curriculo do |curriculo| %>
+    <div class="form-group">
+      <%= curriculo.label :asset, 'Arquivo(*.pdf)', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <%= curriculo.file_field :asset, class: 'col-md-6 col-sm-6 col-xs-12' %>
+        </div>
+    </div>
+    <% end %>
+
+
+<% if current_usuario.has_role?(:professor) %>
+<% @usuario.build_plano_de_trabalho if @usuario.plano_de_trabalho.nil? %>
+  <h2>Plano de Trabalho</h2>
+  
+  <%= f.fields_for :plano_de_trabalho do |plano_de_trabalho| %>
+    <div class="form-group">
+      <%= plano_de_trabalho.label :asset, 'Arquivo(*.pdf)', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <%= plano_de_trabalho.file_field :asset, class: 'col-md-6 col-sm-6 col-xs-12' %>
+        </div>
+    </div>
+    <% end %>
+
+
+
+  <h2>Produtividade</h2>
+  
+<% @usuario.build_produtividade if @usuario.produtividade.nil? %>
+  <%= f.fields_for :produtividade do |produtividade| %>
+    <div class="form-group">
+      <%= produtividade.label :asset, 'Arquivo(*.pdf)', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <%= produtividade.file_field :asset, class: 'col-md-6 col-sm-6 col-xs-12' %>
+        </div>
+    </div>
+    <% end %>
+
+<% end %>
+
+
+
+  <h2>Dados</h2>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="form-group">
+        <% if @minimum_password_length %>
+          <br />
+          <em>
+            <%= @minimum_password_length %> caracteres minimo</em>
+          <% end %>
+          <i>(Deixe o campo em branco, caso não queira alterar a senha)</i>
+
+    <%= f.label :password, 'Senha', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control col-md-7 col-xs-12' %>
+   </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, 'Confirme sua senha', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+      <br />
+   <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control col-md-7 col-xs-12' %>
+   </div>
+  </div>
+
+  <div class="form-group">
+    <i>(Para atualizar os dados digite a senha atual)</i>
+    <%= f.label :current_password, 'Senha atual', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+   <div class="col-md-6 col-sm-6 col-xs-12">
+    <%= f.password_field :current_password, class: 'form-control col-md-7 col-xs-12' %>
+   </div> 
+  </div>
+
+
+
+  <div class="form-group">
+    <div class='control-label col-md-3 col-sm-3 col-xs-12'>
+      <%= f.submit "Atualizar", class: 'btn btn-info btn-lg' %>
+    </div>
+  </div>
+<% end %>
+
+<!-- <h3>Deletar Conta</h3> -->
+
+<!-- <p>Unhappy? <%= button_to "Deletar Conta", registration_path(resource_name), data: { confirm: t('message.confirm') }, method: :delete %></p> -->

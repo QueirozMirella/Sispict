@@ -1,0 +1,6 @@
+<h1>Editar Projeto</h1>
+
+<%= render 'form', projeto: @projeto %>
+
+<%= link_to 'Visualizar', [:backoffice, @edital,@projeto] %> |
+<%= link_to 'Voltar', backoffice_edital_projetos_path(@edital) %>

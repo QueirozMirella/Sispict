@@ -1,0 +1,110 @@
+
+<div class="col-md-3 left_col">
+  <div class="left_col scroll-view">
+
+    <div class="navbar nav_title" style="border: 0;">
+      <a href="/" class="site_title">
+        <%= image_tag("logo.png") %>
+      </a>
+    </div>
+    <div class="clearfix"></div>
+
+
+    <!-- menu prile quick info -->
+    <div class="profile">
+      <div class="profile_pic"> 
+        <img src="https://www.isc.hbs.edu/Style%20Library/hbs/images/home/icons/large-circles/business-person-icon.png" class="img-circle profile_img" alt="">
+      </div>
+      <div class="profile_info">
+        <span>Bem vindo,</span>
+        <h2><%= /(^[\w.]+)/.match(current_usuario.nome) %></h2>
+      </div>
+    </div>
+    <!-- /menu prile quick info -->
+
+    <br />
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+      <div class="menu_section">
+        <h3><%= current_usuario.roles.last.name %></h3>
+        <ul class="nav side-menu">
+
+
+
+            <li>
+              <%= link_to backoffice_dashboard_path do %>
+                <i class="fa fa-dashboard"></i>Dashboard
+              <% end %>
+            
+
+            </li>
+
+            <li>
+              <a><i class="fa fa-file-text-o"></i> Edital <span class="fa fa-chevron-down"></span></a>
+              
+              <ul class="nav child_menu" style="display: none"> 
+
+                <li>
+                  <%= link_to "Editais", backoffice_editais_path %>
+                </li>
+ 
+               <% if current_usuario.has_role?(:assessor) %>
+                 <li>
+                  <%= link_to "Cadastrar", new_backoffice_edital_path %>
+                 </li>
+               <% end %>
+
+              </ul>
+
+            </li>
+
+          
+          <% if current_usuario.has_role?(:assessor) %>
+            <li>
+              <a><i class="fa fa-users"></i> Usuário <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu" style="display: none">
+
+                <li>
+                  <%= link_to "Usuários", backoffice_usuarios_path  %>
+                </li>
+
+              </ul>
+            </li>
+            <li>
+              <a><i class="fa fa-book"></i> Inscrição <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu" style="display: none">
+
+                <li>
+                  <%= link_to "Inscrições", backoffice_inscricoes_editais_path  %>
+                </li>
+
+              </ul>
+            </li>
+          <% end %>
+
+        </ul>
+      </div>
+
+      </div>
+      <!-- /sidebar menu -->
+
+      <!-- /menu footer buttons -->
+      <div class="sidebar-footer hidden-small">
+        <a data-toggle="tooltip" data-placement="top" title="Settings">
+          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+          <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Lock">
+          <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="Logout">
+          <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+        </a>
+      </div>
+      <!-- /menu footer buttons -->
+    </div>
+  </div>

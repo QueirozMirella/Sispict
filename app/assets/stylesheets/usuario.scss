@@ -1,0 +1,20 @@
+#checkbox_flex {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#checkbox_flex label {
+    padding: 1em;
+}
+
+#checkbox_flex label input[type=checkbox] {
+    position: relative;
+    vertical-align: middle;
+    bottom: 1px;
+    margin: 5px;
+    display: inline;
+}
+
+.usuario_list p{
+  font-size: 19px;
+}

@@ -1,0 +1,44 @@
+
+  <!--Navigation bar-->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <%= image_tag  "logo.png", alt: '' %>
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#feature">Home</a>
+          </li>
+          <li>
+            <a href="#organisations">Conheça o Programa</a>
+          </li>
+          <li>
+            <a href="#courses">Editais</a>
+          </li>
+          <li>
+            <a href="#pricing">Revista</a>
+          </li>
+          <li>
+            <%= link_to 'Cadastrar', "#signup", "data-target": "#signup", "data-toggle": "modal" %>
+          </li>
+          <li>
+            <%= link_to 'Logar', "#login", "data-target": "#login", "data-toggle": "modal" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--/ Navigation bar-->
+ 
+
+  <%= render 'site/shared/session_sign_in' %>
+  <%= render 'site/shared/registration_sign_up' %>
+  <%= render 'site/shared/forget_password' %>

@@ -1,0 +1,19 @@
+<div class="container">
+  <h1><%=  t('activerecord.models.predio.one') %></h1>
+  <div class="show_page"> 
+
+    <ul>
+      <li>
+          <strong><%= t('activerecord.attributes.predio.name') %>:</strong>
+          <%= @predio.nome %>
+        </li> 
+        <li>
+        	<strong>Acronimo:</strong>
+        	<%= @predio.acronimo %>
+        </li>
+      <li>
+        <%= link_to "#{t('buttons.edit')}", edit_backoffice_predio_path(@predio), class: 'btn btn-info btn-lg' %> <%= link_to t('buttons.back'), backoffice_editais_path, class: 'btn btn-info btn-lg' %>
+      </li> 
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+
+<h1>Editais</h1>
+<hr />
+
+<div class="center-content">
+
+    <div class="col-md-4">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>EDITAL ABERTO
+          </h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li>
+              <a class="collapse-link">
+                <i class="fa fa-chevron-up"></i>
+              </a>
+            </li>
+            <li>
+              <a class="close-link">
+                <i class="fa fa-close"></i>
+              </a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <% @editais.each do |edital| %>
+              <article class="media event">
+                <a class="pull-left date">
+                  <p class="month"><%= I18n.l(edital.termino, format: "%B") %></p>
+                  <p class="day"><%= edital.termino.day %></p>
+                </a>
+                <div class="media-body">
+                  <p><span class="title" >Edital #<%= edital.codigo %></span<br /></p>
+                  <p><span>CR Mínimo:</span> <%= edital.cr %></p>
+                  <p><span>Início do Edital:</span> <%= I18n.l(edital.inicio, format: :default) %></p>
+                  <p><span>Termino:</span> <%= I18n.l(edital.termino, format: :default) %></p>
+                  <p><span>Descrição:</span> <%= edital.descricao %></p>
+
+                  
+                  <p>
+                    <% if e_bosista_e_nao_escrito(current_usuario, edital.inscricoes) %>
+                      <%= link_to 'CONCORRER AO EDITAL', new_backoffice_edital_inscricao_path(edital), class: 'btn btn-primary'  %>
+                    <% else %>
+                      <br/>
+                      <p class="red">Você já está inscrito, nesse edital. <br/>Aguarde o resultado da chamada.</p>
+                      <br/>
+                    <% end %>
+                    <%= link_to 'VISUALIZAR EDITAL', edital.asset_url, target: "_blank", class: 'btn btn-primary'  %>
+                  </p>
+
+
+                  <br/>
+                  <% if current_usuario.has_role?(:assessor) %>
+                    <p>
+                        <%= link_to t('buttons.show'), backoffice_edital_path(edital), class: 'btn btn-primary' %>
+                        <%= link_to t('buttons.edit'), edit_backoffice_edital_path(edital), class: 'btn btn-primary' %>
+                    </p>
+                  <% end %>
+
+                
+
+                  
+                </div>
+              </article>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+</div>

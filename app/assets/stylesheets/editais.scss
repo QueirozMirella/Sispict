@@ -1,0 +1,28 @@
+article p {
+    font-size: 15px;
+    color: #3085ff;
+    span {
+        font-size: 17px;
+        font-weight: bold;
+        color: #204d74;
+    }
+}
+
+.media .date,
+.calendar .date,
+.media .calendar,
+.calendar .calendar {
+    width: 70px;
+    background: #347bb7;
+}
+
+.media-body .title {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.center-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

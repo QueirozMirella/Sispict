@@ -1,0 +1,9 @@
+"pt-BR":
+  message:
+    confirm: Você deseja executar essa ação?
+    listing: Listando
+    editing: Editar
+    errors: 'as informações não pode ser salvas:'
+    created: Cadastrado com sucesso.
+    updated: Atualizado com sucesso.
+    destroy: Deletado com sucesso.

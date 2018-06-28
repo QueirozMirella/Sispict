@@ -1,0 +1,22 @@
+<div class="nested-fields">
+    
+  
+   <div class="form-group">
+     <label class="control-label col-md-3 col-sm-3 col-xs-12">Centro</label>
+     <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.collection_select :predio_id, @predios, :id, :nome, {}, { class: ' form-control col-md-6 col-sm-6 col-xs-12'} %>
+     </div>
+     <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+   </div>
+
+
+    <div class="form-group">
+        <%= f.label :quantidade, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <%= f.text_field :quantidade, class: 'form-control col-md-6 col-sm-6 col-xs-12' %>
+            </div>
+            <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+
+    <div class="links"><%= link_to_remove_association "- Remover Bolsa", f, class: 'btn btn-primary' %></div>
+</div>

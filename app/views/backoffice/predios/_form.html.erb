@@ -1,0 +1,36 @@
+<%= form_for [:backoffice, @predio], html: { class: 'form-horizontal form-label-left' } do |f| %>
+  <% if predio.errors.any? %>
+    <div id="error_explanation">
+      <h2<%= "#{pluralize(predio.errors.count, 'error')} #{t('message.errors')}"%></h2>
+
+      <ul>
+      <% predio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %> 
+
+  <div class="form-group">
+    <%= f.label :nome, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.text_field :nome, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :acronimo, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.text_field :acronimo, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class='control-label col-md-3 col-sm-3 col-xs-12'>
+      <%= f.submit class: 'btn btn-info btn-lg' %>
+    </div>
+  </div>
+
+<% end %>

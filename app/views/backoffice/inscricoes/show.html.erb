@@ -1,0 +1,109 @@
+<div class="container">
+      <h1>Inscrição </h1>
+
+      <hr />
+
+      <div class="row center-content">
+
+
+      <div class="col-md-4">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>INSCRIÇÃO
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li>
+                <a class="collapse-link">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+              </li>
+              <li>
+                <a class="close-link">
+                  <i class="fa fa-close"></i>
+                </a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+              <article class="media event">
+                <a class="pull-left date">
+                  <p class="month">
+                    <%= I18n.l(@inscricao.edital.termino, format: "%B") %>
+                  </p>
+                  <p class="day">
+                    <%= @inscricao.edital.termino.day %>
+                  </p>
+                </a>
+                <div class="media-body">
+                  <p><span class="title">Edital #<%= @inscricao.edital.codigo %></p>
+                  </span>
+                  
+                  <h2>Edital</h2>
+                  <hr />
+                  <p>
+                      <%= link_to 'VISUALIZAR EDITAL', @inscricao.edital.asset_url, target: "_blank", class: 'btn btn-primary' %>
+                  </p>
+                  <p><span>CR EDITAL:</span> <%= @inscricao.edital.cr %></p>
+                  <p>
+                    <span>CR:</span>  <%= @inscricao.bolsista.cr %>
+                  </p>
+                  <p>
+                    <span>Início do Edital:</span>
+                    <%= I18n.l(@inscricao.edital.inicio, format: :default) %>
+                  </p>
+                  <p>
+                    <span>Termino:</span> <%= I18n.l(@inscricao.edital.termino, format: :default) %>
+                  </p>
+
+                  <h2>Projeto</h2>
+                  <hr/>
+
+                  <p>
+                    <span>Título</span> <%= @inscricao.projeto.titulo %>
+                  </p>
+                  <p>
+                    <span>Palavras chave</span>
+                    <%= @inscricao.projeto.palavras_chave %>
+                  </p>
+                  <p>
+                    <span>Área</span>
+                    <%= @inscricao.projeto.area %>
+                  </p>
+                  <p>
+                    <span>Objetivo</span>
+                    <%= @inscricao.projeto.objetivo %>
+                  </p>
+                  <p>
+                    <span>Orientador</span>
+                    <%= "#{@inscricao.orientador.nome} #{@inscricao.orientador.sobrenome}" %>
+                  </p>
+                  <p>
+                    <span>Solicitante</span>
+                    <%= "#{@inscricao.bolsista.nome} #{@inscricao.bolsista.sobrenome}" %>
+                  </p>
+
+                  <br />
+
+                  <p>
+                    <span>STATUS:</span>
+                    EM ANÁLISE
+                  </p>
+                  <br />
+
+
+                  <% if edital_aberto?(@inscricao.edital.termino) %>
+                    <p>
+                      <%= link_to "#{t('buttons.edit')}", edit_backoffice_edital_inscricao_path(@edital, @inscricao), class: 'btn btn-primary' %> 
+      
+                    </p>
+                    <% end %>
+                </div>
+              </article>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>

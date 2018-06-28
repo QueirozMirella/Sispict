@@ -1,0 +1,154 @@
+<%= form_for [:backoffice, edital, inscricao], html: { class: 'form-horizontal form-label-left' } do |f| %>
+
+
+<% if @inscricao.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= "#{pluralize(@inscricao.errors.count, 'error')} #{t('message.errors')}"%>
+    </h2>
+
+    <ul>
+      <% @inscricao.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+        <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <h2>Projeto</h2>
+  
+  <%= f.fields_for :projeto do |projeto| %> 
+
+      <div class="form-group">
+        <%= projeto.label :titulo, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <%= projeto.text_field :titulo, class: 'form-control col-md-6 col-sm-6 col-xs-12' %>
+        </div>projeto
+        <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+      </div>
+
+      <div class="form-group">
+        <%= projeto.label :palavras_chave, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <%= projeto.text_field :palavras_chave, class: 'form-control col-md-6 col-sm-6 col-xs-12' %>
+        </div>projeto
+        <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+      </div>
+
+
+      <div class="form-group">
+      <%= projeto.label :area, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= projeto.text_field :area, class: 'form-control col-md-6 col-sm-6 col-xs-12' %>
+      </div>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+      </div>
+
+
+    <div class="form-group">
+      <%= projeto.label :objetivo, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= projeto.text_area :objetivo, class: 'form-control col-md-6 col-sm-6 col-xs-12' %>
+      </div>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+
+  <% end %>
+  
+   <div class="form-group">
+     <label class="control-label col-md-3 col-sm-3 col-xs-12">Laboratório do Orientador</label>
+     <div class="col-md-6 col-sm-6 col-xs-12">
+       <%= select "laboratorio", "laboratorio_id", @laboratorios,{prompt: 'Selecione o Laboratório'}, {class: 'form-control col-md-6 col-sm-6 col-xs-12'} %>
+       
+      </div>
+     <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+   </div>
+  
+   <div class="form-group">
+     <label class="control-label col-md-3 col-sm-3 col-xs-12">Orientador</label>
+     <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.grouped_collection_select(:orientador_id, Laboratorio.order(:nome) , :orientadores, :nome, :id, :nome, {}, {class: 'form-control col-md-6 col-sm-6 col-xs-12'}) %>
+     </div>
+     <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+   </div>
+
+   <div class="container">
+      <% if params[:controller] != 'new' || params[:controller] != 'create' %>
+        <p>Caso não queira trocar os arquivos, por favor deixe em branco</p>
+        <% end %>
+   </div>
+
+  <h2>Declaração de Vínculo</h2>
+    <div class="form-group">
+          <%= f.fields_for :declaracao_de_vinculo do |declaracao_de_vinculo| %>
+              <div class="form-group">
+                <%= declaracao_de_vinculo.label :asset, 'Arquivo(*.pdf)', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                    <%= declaracao_de_vinculo.file_field :asset, class: 'col-md-6 col-sm-6 col-xs-12' %>
+                  </div>
+              </div> 
+
+
+              <div class="form-group">
+                
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                    <%= declaracao_de_vinculo.hidden_field :asset_cache, value: @inscricao.declaracao_de_vinculo.asset_cache, class: 'col-md-6 col-sm-6 col-xs-12' %>
+                  </div>
+              </div> 
+
+
+
+          <% end %>
+    </div>
+
+    <div class="form-group">
+      <h2>Extrato</h2>
+        <%= f.fields_for :extrato do |extrato| %>
+            <div class="form-group">
+              <%= extrato.label :asset, 'Arquivo(*.pdf)', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <%= extrato.file_field :asset, class: 'col-md-6 col-sm-6 col-xs-12' %>
+                </div>
+            </div> 
+
+
+              <div class="form-group">
+                
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                    <%= extrato.hidden_field :asset_cache, value: @inscricao.extrato.asset_cache, class: 'col-md-6 col-sm-6 col-xs-12' %>
+                  </div>
+              </div> 
+
+        <% end %>
+    </div>
+
+  <div class="form-group">
+  <h2>Ficha Cadastral</h2>
+
+    <%= f.fields_for :ficha_cadastral do |ficha_cadastral| %>
+        <div class="form-group">
+          <%= ficha_cadastral.label :asset, 'Arquivo(*.pdf)', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <%= ficha_cadastral.file_field :asset, class: 'col-md-6 col-sm-6 col-xs-12' %>
+            </div>
+        </div>
+
+        <div class="form-group">
+        
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <%= ficha_cadastral.hidden_field :asset_cache, value: @inscricao.ficha_cadastral.asset_cache, class: 'col-md-6 col-sm-6 col-xs-12' %>
+          </div>
+        </div>
+    
+    <% end %>
+</div>
+  <div class="form-group">
+    
+
+  <div class='control-label col-md-3 col-sm-3 col-xs-12'>
+    <%= f.submit class: 'btn btn-info btn-lg' %>
+  </div>
+  </div>
+<% end %>

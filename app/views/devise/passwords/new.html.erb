@@ -1,0 +1,18 @@
+<div class="forget_password">
+    <h2>Esqueceu a senha?</h2>
+    
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
+    
+      <div class="input-field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+    
+      <div class="actions">
+        <%= f.submit "Envie me as instruçõesp para uma nova senha",  class: 'btn waves-effect waves-light blue' %>
+      </div>
+    <% end %>
+    
+    <%= render "devise/shared/links" %>    
+</div>

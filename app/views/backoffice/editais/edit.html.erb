@@ -1,0 +1,5 @@
+<h1><%= "#{t('message.editing')} #{t('activerecord.models.edital.one')}" %> </h1>
+
+<%= render 'form', edital: @edital %>
+
+<%= link_to t('buttons.show'), [:backoffice, @edital], class: 'btn btn-primary' %>

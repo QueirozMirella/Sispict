@@ -1,0 +1,29 @@
+<h1>Bolsas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Predio</th>
+      <th>Edital</th>
+      <th>Quantidade</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bolsas.each do |bolsa| %>
+      <tr>
+        <td><%= bolsa.predio %></td>
+        <td><%= bolsa.edital %></td>
+        <td><%= bolsa.quantidade %></td>
+        <td><%= link_to 'Visualizar', [:backoffice, bolsa] %></td>
+        <td><%= link_to 'Editar', edit_backoffice_bolsa_path(bolsa) %></td>
+        <td><%= link_to 'Excluir', [:backoffice, bolsa], method: :delete, data: { confirm: 'Você confirma?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Cadastrar bolsa', new_backoffice_bolsa_path %>

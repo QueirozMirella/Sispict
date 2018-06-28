@@ -1,0 +1,134 @@
+<%= form_for [:backoffice, @usuario], html: { class: 'form-horizontal form-label-left' } do |f| %>
+
+  <div class="form-group">
+    <%= f.label :email, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.email_field :email, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+  <i>(Deixe o campo em branco, caso não queira alterar a senha)</i>
+   <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> caracteres minimo</em>
+    <% end %>
+    <%= f.label :password, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.password_field :password, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.password_field :password_confirmation, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+
+
+
+<!-- FORM -->
+
+  <div class="form-group">
+    <%= f.label :nome, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.text_field :nome, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :sobrenome, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.text_field :sobrenome, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+
+
+  <%= f.fields_for :cpf do |cpf| %> 
+    <div class="form-group">
+      <%= cpf.label :numero, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= cpf.text_field :numero, class: 'form-control col-md-7 col-xs-12', placeholder: 'CPF - somente os números' %>
+        <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+      </div>
+    </div>
+  <% end %>
+
+ 
+
+  <div class="form-group">
+    <%= f.label :telefone, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.telephone_field :telefone, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+     
+
+  <div class="form-group">
+    <%= f.label :celular, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.telephone_field :celular, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :matricula, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.text_field :matricula, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :data_de_nascimento, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.date_field :data_de_nascimento, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :cr, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.number_field :cr, min: 0, max:10, step: 0.1, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :lattes, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <%= f.url_field :lattes, class: 'form-control col-md-7 col-xs-12' %>
+      <ul class="parsley-errors-list" id="parsley-id-3782"></ul>
+    </div>
+  </div>
+
+<!-- FORM -->
+
+
+    <%= f.label :role, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+  <div class="form-group" id="checkbox_flex">
+    <%= f.collection_check_boxes(:role_ids, options_for_roles, :id, :description, checked: usuario.checked_roles)  do |b| %> 
+        <%= b.label{ b.check_box + b.text } %> 
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <div class='control-label col-md-3 col-sm-3 col-xs-12'>
+      <%= f.submit class: 'btn btn-info btn-lg' %>
+    </div>
+  </div>
+
+<% end %> 

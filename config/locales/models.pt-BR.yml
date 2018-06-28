@@ -1,0 +1,21 @@
+"pt-BR":
+  activerecord:
+    models:
+      edital:
+        one: Edital
+        other: Editais
+      predio:
+        one: Predio
+        other: Predios
+      usuario:
+        one: Usuário
+        other: Usuários
+      projeto:
+        one: Projeto
+        other: Projetos
+      laboratorio:
+        one: Laboratório
+        other: Laboratórios
+      attributes:
+        predio:
+          nome: Nome

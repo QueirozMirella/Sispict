@@ -1,0 +1,70 @@
+<div class="container">
+      <h1><%=  t('activerecord.models.edital.one') %></h1>
+
+      <hr />
+
+      <div class="row center-content">
+
+
+      <div class="col-md-4">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>EDITAL
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li>
+                <a class="collapse-link">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+              </li>
+              <li>
+                <a class="close-link">
+                  <i class="fa fa-close"></i>
+                </a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+              <article class="media event">
+                <a class="pull-left date">
+                  <p class="month">
+                    <%= I18n.l(@edital.termino, format: "%B") %>
+                  </p>
+                  <p class="day">
+                    <%= @edital.termino.day %>
+                  </p>
+                </a>
+                <div class="media-body">
+                  <p><span class="title">Edital #<%= @edital.codigo %></p>
+                  </span>
+                  <p>
+                      <%= link_to 'VISUALIZAR EDITAL', @edital.asset_url, target: "_blank", class: 'btn btn-primary' %>
+                  </p>
+                  <p>
+                    <span>CR Mínimo:</span>  <%= @edital.cr %>
+                  </p>
+                  <p>
+                    <span>Início do Edital:</span>
+                    <%= I18n.l(@edital.inicio, format: :default) %>
+                  </p>
+                  <p>
+                    <span>Termino:</span> <%= I18n.l(@edital.termino, format: :default) %>
+                  </p>
+                  <p>
+                    <span>Descrição</span> <%= @edital.descricao %>
+                  </p>
+                    <p>
+                      <%= link_to "#{t('buttons.edit')}", edit_backoffice_edital_path(@edital), class: 'btn btn-primary' %> 
+                      
+                      <%= link_to t('buttons.back'), backoffice_editais_path, class: 'btn btn-primary' %>
+                    </p>
+                </div>
+              </article>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>

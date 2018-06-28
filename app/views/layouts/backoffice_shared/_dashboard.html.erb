@@ -1,0 +1,45 @@
+<aside id="slide-out" class="side-nav white fixed" style="display: block;">
+                <div class="side-nav-wrapper">
+                    <div class="sidebar-profile">
+                        <div class="sidebar-profile-image">
+                            <img src="https://cdn3.f-cdn.com/files/download/33774556/friendly+face.jpg" class="circle" alt="">
+                        </div>
+                        <div class="sidebar-profile-info">
+                            <a href="javascript:void(0);" class="account-settings-link">
+                                <p>David Doe</p> 
+                                <p>Administrador</p> 
+                            </a>
+                        </div>
+                    </div>
+                <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion">
+                  <li><a href="/"><i class="material-icons">settings_input_svideo</i>Dashboard</a></li> 
+
+                  <li><%= link_to edit_usuario_registration_path do %>
+                     <i class="material-icons">settings_input_svideo</i>Perfil
+                    <% end %>
+                  </li>
+
+
+                  <li><%= link_to editais_path do %>
+                     <i class="material-icons">settings_input_svideo</i>Edital
+                    <% end %>
+                  </li>
+
+
+                  <li><%= link_to new_predio_path do %>
+                  <i class="material-icons">settings_input_svideo</i>Prédios
+                    <% end %>
+                  </li>
+
+                  <li><%= link_to destroy_usuario_session_path, method: :delete do %>
+                     <i class="material-icons">settings_input_svideo</i>Sair
+                    <% end %>
+                  </li>
+ 
+                </ul>
+                <div class="footer">
+                    <p class="copyright">SISPICT - Desenvolvido por Rodolfo Peixoto e Annabell</p>
+                    <a href="#!">Privacidade</a> &amp; <a href="#!">Termos</a>
+                </div>
+                </div>
+            </aside>

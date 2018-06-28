@@ -1,0 +1,19 @@
+
+
+<p>
+  <strong>Predio:</strong>
+  <%= @bolsa.predio %>
+</p>
+
+<p>
+  <strong>Edital:</strong>
+  <%= @bolsa.edital %>
+</p>
+
+<p>
+  <strong>Quantidade:</strong>
+  <%= @bolsa.quantidade %>
+</p>
+
+<%= link_to 'Editar', edit_backoffice_bolsa_path(@bolsa) %> |
+<%= link_to 'Voltar', backoffice_bolsas_path %>

@@ -1,0 +1,5 @@
+     <!-- <% if inscricao_existe(edital.inscricoes) %>
+                  <p>
+                    <%= link_to 'Inscrição', edital_inscricoes_path(@inscricao_criada), class: 'btn btn-primary' %>
+                  </p>
+                  <% end %> -->
